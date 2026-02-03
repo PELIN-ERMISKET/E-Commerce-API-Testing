@@ -47,8 +47,11 @@ Screenshot
 ## TC-PROD-002 Validate Mandatory Fields for Products
 
 **Endpoint:** GET /products?limit=194&skip=0
+
 **Expected Result:** 200 OK + each product contains mandatory fields
+
 **Actual Result:** 200 OK + all mandatory fields present
+
 **Result:** ✅ Pass
 
 **Mandatory Fields:**
@@ -60,7 +63,9 @@ Steps:
 
 1.Send GET request to /products?limit=194&skip=0.
 2.Verify status code is 200.
+
 3.Verify response body contains products as an array.
+
 4.For each product in products[], verify the following fields exist and are not null:
 
 id,title,price,category,stock,rating,images
