@@ -54,14 +54,13 @@ Screenshot
 
 **Result:** ✅ Pass
 
-**Mandatory Fields:**
-
-id, title, price, category, stock, rating, images
+**Mandatory Fields:**id, title, price, category, stock, rating, images
 
 
 Steps:
 
 1.Send GET request to /products?limit=194&skip=0.
+
 2.Verify status code is 200.
 
 3.Verify response body contains products as an array.
@@ -99,12 +98,14 @@ Screenshot
 ## TC-PROD-003 Validate Numeric Field Constraints for Products
 
 **Endpoint:** GET /products?limit=194&skip=0
+
 **Expected Result:** 200 OK + numeric fields meet defined constraints
+
 **Actual Result:** 200 OK + all numeric fields within valid ranges
+
 **Result:** ✅ Pass
 
 **Validated Numeric Fields & Rules:**
-
 price >= 0
 stock >= 0
 rating between 0 and 5
@@ -113,10 +114,12 @@ discountPercentage between 0 and 100
 **Steps:**
 
 1.Send GET request to /products?limit=194&skip=0.
-2.Verify status code is 200.
-3.Verify response body contains products as an array.
-4.For each product in products[]:
 
+2.Verify status code is 200.
+
+3.Verify response body contains products as an array.
+
+4.For each product in products[]:
 Verify price is greater than or equal to 0.
 Verify stock is greater than or equal to 0.
 Verify rating value is between 0 and 5.
@@ -146,17 +149,25 @@ Verify discountPercentage value is between 0 and 100.
 ## TC-PROD-004 Validate Pagination with limit and skip Parameters
 
 **Endpoint:** GET /products?limit=10&skip=10
+
 **Expected Result:** 200 OK + products array contains 10 items starting from the offset
+
 **Actual Result:** 200 OK + products array contains 10 items starting from id 11
+
 **Result:** ✅ Pass
 
 Steps:
 
 1.Send GET request to /products?limit=10&skip=10.
+
 2.Verify status code is 200.
+
 3.Verify response contains products as an array.
+
 4.Verify products.length equals 10.
+
 5.Verify returned products are different from the first page (offset applied).
+
 6.Verify the first product id is greater than the first page results.
 
 **Sample Response:**
@@ -183,18 +194,24 @@ Steps:
 ## TC-PROD-005 GET /products/{id} (Get Product by Valid ID)
 
 **Endpoint:** GET /products/1
+
 **Expected Result:**200 OK + product details returned for the given id
+
 **Actual Result:** 200 OK + product details returned successfully
+
 **Result:** ✅ Pass
 
 Steps:
 
 1.Send GET request to /products/1.
-2.Verify status code is 200.
-3.Verify response body contains product details.
-4.Verify id value in response equals 1.
-5.Verify mandatory fields are present:
 
+2.Verify status code is 200.
+
+3.Verify response body contains product details.
+
+4.Verify id value in response equals 1.
+
+5.Verify mandatory fields are present:
 id,title,price,category,stock,rating,images
 
 **Sample Response:**
@@ -220,14 +237,19 @@ id,title,price,category,stock,rating,images
 ## TC-PROD-006 GET /products/{id} (Boundary Value Non-Existing ID)
 
 **Endpoint:** GET /products/195
+
 **Expected Result:** 404 Not Found + appropriate error response
+
 **Actual Result:** 404 Not Found
+
 **Result:** ✅ Pass
 
 Steps:
 
 1.Send GET request to /products/195.
+
 2.Verify status code is 404.
+
 3.Verify response body contains an error message indicating product not found.
 
 **Sample Response:**
@@ -243,15 +265,20 @@ Steps:
 
 ## TC-PROD-007 GET /products/{id} (Invalid ID Type)
 
-**Endpoint:**GET /products/abc
+**Endpoint:** GET /products/abc
+
 **Expected Result:** 400 Bad Request (or 404 Not Found) + appropriate error response
+
 **Actual Result:** 404 Not Found
+
 **Result:** ✅ Pass
 
 Steps:
 
 1.Send GET request to /products/abc.
+
 2.Verify status code is 400 or 404 (API handles invalid id type safely).
+
 3.Verify response body contains an error message.
 
 **Sample Response:**
@@ -268,17 +295,24 @@ Steps:
 
 ## TC-PROD-008 GET /products/search (Search Products by Keyword)
 
-Endpoint: GET /products/search?q=mascara
-Expected Result: 200 OK + products array returned matching the search keyword
-Actual Result: 200 OK + products related to the keyword returned
-Result: ✅ Pass
+**Endpoint:** GET /products/search?q=mascara
+
+**Expected Result:** 200 OK + products array returned matching the search keyword
+
+**Actual Result:** 200 OK + products related to the keyword returned
+
+**Result:** ✅ Pass
 
 Steps:
 
 1.Send GET request to /products/search?q=mascara.
+
 2.Verify status code is 200.
+
 3.Verify response body contains products as an array.
+
 4.Verify products.length is greater than 0.
+
 5.Verify returned products contain the keyword mascara in title or description.
 
 **Sample Response:**
@@ -303,15 +337,21 @@ Steps:
 ## TC-PROD-009 GET /products/search (Search with Non-Existing Keyword)
 
 **Endpoint:** GET /products/search?q=nonexistingkeyword
+
 **Expected Result:** 200 OK + empty products array returned
+
 **Actual Result:** 200 OK + empty products array returned
+
 **Result:** ✅ Pass
 
 Steps:
 
 1.Send GET request to /products/search?q=nonexistingkeyword.
+
 2.Verify status code is 200.
+
 3.Verify response body contains products as an array.
+
 4.Verify products.length equals 0.
 
 **Sample Response:**
@@ -332,15 +372,21 @@ Steps:
 ## TC-PROD-010 GET /products (Response Time / Basic Performance Check)
 
 **Endpoint:** GET /products?limit=194&skip=0
+
 **Expected Result:** 200 OK + response time under 2000 ms
+
 **Actual Result:** 200 OK + response time 1.36 seconds
+
 **Result:** ✅ Pass
 
 Steps:
 
 1.Send GET request to /products?limit=194&skip=0.
+
 2.Verify status code is 200.
+
 3.Check response time from Postman.
+
 4.Verify response time is under 2000 ms.
 
 **Sample Response:**
