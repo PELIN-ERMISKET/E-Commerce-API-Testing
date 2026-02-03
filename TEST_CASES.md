@@ -14,8 +14,11 @@
 Steps:
 
 1.Send GET request to /products?limit=194&skip=0.
+
 2.Verify status code is 200.
+
 3.Verify response contains products as an array.
+
 4.Verify products.length is greater than 0.
 
 
