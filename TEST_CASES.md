@@ -91,7 +91,7 @@ Verify images field is an array.
 }
 ```
 
-Screenshot
+**Screenshot**
 ![List mandatory fields](./screenshots/mandatory_fields1.png)
 ![List mandatory fields](./screenshots/mandatory_fields2.png)
 
@@ -113,19 +113,19 @@ discountPercentage between 0 and 100
 
 **Steps:**
 
-1.Send GET request to /products?limit=194&skip=0.
+**1.** Send GET request to /products?limit=194&skip=0.
 
-2.Verify status code is 200.
+**2.** Verify status code is 200.
 
-3.Verify response body contains products as an array.
+**3.** Verify response body contains products as an array.
 
-4.For each product in products[]:
+**4.** For each product in products[]:
 Verify price is greater than or equal to 0.
 Verify stock is greater than or equal to 0.
 Verify rating value is between 0 and 5.
 Verify discountPercentage value is between 0 and 100.
 
-5.Confirm no product violates the defined numeric constraints.
+**5.** Confirm no product violates the defined numeric constraints.
 
 **Sample Response:**
 
@@ -143,7 +143,7 @@ Verify discountPercentage value is between 0 and 100.
   ]
 }
 ```
-
+**Screenshot**
 ![List numeric fields](./screenshots/numeric_fields.png)
 
 ## TC-PROD-004 Validate Pagination with limit and skip Parameters
@@ -156,19 +156,19 @@ Verify discountPercentage value is between 0 and 100.
 
 **Result:** ✅ Pass
 
-Steps:
+**Steps:**
 
-1.Send GET request to /products?limit=10&skip=10.
+**1.** Send GET request to /products?limit=10&skip=10.
 
-2.Verify status code is 200.
+**2.** Verify status code is 200.
 
-3.Verify response contains products as an array.
+**3.** Verify response contains products as an array.
 
-4.Verify products.length equals 10.
+**4.** Verify products.length equals 10.
 
-5.Verify returned products are different from the first page (offset applied).
+**5.** Verify returned products are different from the first page (offset applied).
 
-6.Verify the first product id is greater than the first page results.
+**6.** Verify the first product id is greater than the first page results.
 
 **Sample Response:**
 
@@ -188,30 +188,30 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List limit-skip](./screenshots/limit_skip.png)
 
 ## TC-PROD-005 GET /products/{id} (Get Product by Valid ID)
 
 **Endpoint:** GET /products/1
 
-**Expected Result:**200 OK + product details returned for the given id
+**Expected Result:** 200 OK + product details returned for the given id
 
 **Actual Result:** 200 OK + product details returned successfully
 
 **Result:** ✅ Pass
 
-Steps:
+**Steps:**
 
-1.Send GET request to /products/1.
+**1.** Send GET request to /products/1.
 
-2.Verify status code is 200.
+**2.** Verify status code is 200.
 
-3.Verify response body contains product details.
+**3.** Verify response body contains product details.
 
-4.Verify id value in response equals 1.
+**4.** Verify id value in response equals 1.
 
-5.Verify mandatory fields are present:
+**5.** Verify mandatory fields are present:
 id,title,price,category,stock,rating,images
 
 **Sample Response:**
@@ -230,7 +230,7 @@ id,title,price,category,stock,rating,images
   ]
 }
 ```
-
+**Screenshot**
 ![List valid_id](./screenshots/valid_id.png)
 
 
@@ -244,13 +244,13 @@ id,title,price,category,stock,rating,images
 
 **Result:** ✅ Pass
 
-Steps:
+**Steps:**
 
-1.Send GET request to /products/195.
+**1.** Send GET request to /products/195.
 
-2.Verify status code is 404.
+**2.** Verify status code is 404.
 
-3.Verify response body contains an error message indicating product not found.
+**3.** Verify response body contains an error message indicating product not found.
 
 **Sample Response:**
 
@@ -260,7 +260,7 @@ Steps:
   "message": "Product with id '195' not found"
 }
 ```
-
+**Screenshot**
 ![List Non-Existing ID](./screenshots/Non_Existing_ID.png)
 
 ## TC-PROD-007 GET /products/{id} (Invalid ID Type)
@@ -273,13 +273,13 @@ Steps:
 
 **Result:** ✅ Pass
 
-Steps:
+**Steps:**
 
-1.Send GET request to /products/abc.
+**1.** Send GET request to /products/abc.
 
-2.Verify status code is 400 or 404 (API handles invalid id type safely).
+**2.** Verify status code is 400 or 404 (API handles invalid id type safely).
 
-3.Verify response body contains an error message.
+**3.** Verify response body contains an error message.
 
 **Sample Response:**
 
@@ -290,7 +290,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List Invalid ID Type](./screenshots/Invalid_ID_Type.png)
 
 ## TC-PROD-008 GET /products/search (Search Products by Keyword)
@@ -303,17 +303,17 @@ Steps:
 
 **Result:** ✅ Pass
 
-Steps:
+**Steps:**
 
-1.Send GET request to /products/search?q=mascara.
+**1.** Send GET request to /products/search?q=mascara.
 
-2.Verify status code is 200.
+**2.** Verify status code is 200.
 
-3.Verify response body contains products as an array.
+**3.** Verify response body contains products as an array.
 
-4.Verify products.length is greater than 0.
+**4.** Verify products.length is greater than 0.
 
-5.Verify returned products contain the keyword mascara in title or description.
+**5.** Verify returned products contain the keyword mascara in title or description.
 
 **Sample Response:**
 
@@ -331,7 +331,7 @@ Steps:
   ]
 }
 ```
-
+**Screenshot**
 ![List products search](./screenshots/products_search.png)
 
 ## TC-PROD-009 GET /products/search (Search with Non-Existing Keyword)
@@ -344,15 +344,15 @@ Steps:
 
 **Result:** ✅ Pass
 
-Steps:
+**Steps:**
 
-1.Send GET request to /products/search?q=nonexistingkeyword.
+**1.** Send GET request to /products/search?q=nonexistingkeyword.
 
-2.Verify status code is 200.
+**2.** Verify status code is 200.
 
-3.Verify response body contains products as an array.
+**3.** Verify response body contains products as an array.
 
-4.Verify products.length equals 0.
+**4.** Verify products.length equals 0.
 
 **Sample Response:**
 
@@ -366,7 +366,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List Non-Existing Keyword](./screenshots/Non-Existing_Keyword.png)
 
 ## TC-PROD-010 GET /products (Response Time / Basic Performance Check)
@@ -379,15 +379,15 @@ Steps:
 
 **Result:** ✅ Pass
 
-Steps:
+**Steps:**
 
-1.Send GET request to /products?limit=194&skip=0.
+**1.** Send GET request to /products?limit=194&skip=0.
 
-2.Verify status code is 200.
+**2.** Verify status code is 200.
 
-3.Check response time from Postman.
+**3.** Check response time from Postman.
 
-4.Verify response time is under 2000 ms.
+**4.** Verify response time is under 2000 ms.
 
 **Sample Response:**
 
@@ -403,7 +403,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List Response Time](./screenshots/Response_Time.png)
 
 ## TC-PROD-011 GET /products/category/{category} (Category Filter Works)
@@ -413,13 +413,13 @@ Steps:
 **Actual Result:** 200 OK + all returned products have category = beauty
 **Result:** ✅ Pass
 
-Steps:
+**Steps:**
 
-1.Send GET request to /products/category/beauty.
-2.Verify status code is 200.
-3.Verify response contains products as an array.
-4.Verify products.length is greater than 0.
-5.For each product in products[], verify category equals beauty.
+**1.** Send GET request to /products/category/beauty.
+**2.** Verify status code is 200.
+**3.** Verify response contains products as an array.
+**4.** Verify products.length is greater than 0.
+**5.** For each product in products[], verify category equals beauty.
 
 **Sample Response:**
 
@@ -437,7 +437,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List Category Filter](./screenshots/Category_Filter.png)
 
 
@@ -448,13 +448,13 @@ Steps:
 **Actual Result:** 200 OK + products array is empty
 **Result:** ✅ Pass
 
-Steps:
+**Steps:**
 
-1.Send GET request to /products/category/invalidcategoryname.
-2.Verify status code is 200.
-3.Verify response contains products as an array.
-4.Verify products.length equals 0.
-5.Verify total equals 0.
+**1.** Send GET request to /products/category/invalidcategoryname.
+**2.** Verify status code is 200.
+**3.** Verify response contains products as an array.
+**4.** Verify products.length equals 0.
+**5.** Verify total equals 0.
 
 **Sample Response:**
 
@@ -468,7 +468,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List Invalid Category](./screenshots/Invalid_Category.png)
 
 
@@ -479,7 +479,7 @@ Steps:
 **Actual Result:** 200 OK + no duplicate sku values observed (validated via Excel)
 **Result:** ✅ Pass
 
-Steps:
+**Steps:**
 
 1.Send GET request to /products?limit=194&skip=0.
 2.Verify status code is 200.
@@ -518,7 +518,7 @@ Steps:
              ]  }
 
 ```
-
+**Screenshot**
 ![List SKU Uniqueness](./screenshots/SKU_Uniqueness.png)
 
 
@@ -550,7 +550,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List Special Characters](./screenshots/Special_Characters.png)
 
 ## TC-PROD-015 Pagination Consistency (Same Request Returns Same Results)
@@ -587,7 +587,7 @@ Steps :
 }
 
 ```
-
+**Screenshot**
 ![List Pagination Consistency ](./screenshots/Pagination_Consistency.png)
 
 ## TC-PROD-016 Boundary Value: limit=0 handled as default
@@ -629,7 +629,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List limit=0 Default Handling ](./screenshots/limit=0_Default_Handling.png)
 
 
@@ -663,7 +663,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List Ignore Param ](./screenshots/Ignore_Param.png)
 
 ## TC-PROD-018  Search Case Sensitivity Handling
@@ -698,7 +698,7 @@ Steps:
   "total": 1
 }
 ```
-
+**Screenshot**
 ![List Case Sensitivity ](./screenshots/Case_Sensitivity.png)
 
 ## TC-PROD-019  Search Whitespace Handling
@@ -731,7 +731,7 @@ Steps:
   "total": 1
 }
 ```
-
+**Screenshot**
 ![List Whitespace Handling ](./screenshots/Whitespace_Handling.png)
 
 ## TC-PROD-020 Boundary Value: skip Greater Than Total
@@ -763,7 +763,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List Skip Greater Than Total](./screenshots/Skip_Greater_Than_Total.png)
 
 ## TC-PROD-021 Upper Boundary: Very Large Limit Value
@@ -793,7 +793,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List Upper Boundary](./screenshots/Upper_Boundary.png)
 
 
@@ -819,7 +819,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List Invalid Query ](./screenshots/Invalid_Query.png)
 
 
@@ -851,7 +851,7 @@ Steps:
 } 
 
 ```
-
+**Screenshot**
 ![List Negative limit ](./screenshots/Negative_limit.png)
 
 ## TC-PROD-024  Negative Skip Value Handling
@@ -882,7 +882,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List Negative Skip Value](./screenshots/Negative_Skip_Value.png)
 
 ## TC-PROD-025 Invalid Skip Type Validation (skip=abc)
@@ -909,7 +909,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List Invalid Skip Type](./screenshots/Invalid_Skip_Type.png)
 
 
@@ -947,7 +947,7 @@ Steps:
 }
 
 ```
-
+**Screenshot**
 ![List Only Requested Fields](./screenshots/Only_Requested_Fields.png)
 
 
@@ -983,7 +983,7 @@ Steps:
         } ] }
         
 ```
-
+**Screenshot**
 ![List Sort Products by Title](./screenshots/Sort_Products_by_Titles.png)
 
 ## TC-PROD-028 Get All Products Categories (Objects)
@@ -1013,7 +1013,7 @@ Steps:
   }
 ]
 ```
-
+**Screenshot**
 ![List All Products Categories](./screenshots/All_Products_Categories.png)
 
 ## TC-PROD-029  Get Products Category List 
@@ -1041,7 +1041,7 @@ Steps:
   "groceries"
 ]
 ```
-
+**Screenshot**
 ![List Products Category List ](./screenshots/Products_Category_List.png)
 
 ## TC-PROD-030 Search with Empty Query 
@@ -1075,7 +1075,7 @@ Steps:
   "limit": 30
 }
 ```
-
+**Screenshot**
 ![List Search with Empty Query ](./screenshots/Search_with_Empty_Query.png)
 
 ## TC-PROD-031 Search with Whitespace-Only Query
@@ -1109,7 +1109,7 @@ Steps:
   "limit": 30
 }
 ```
-
+**Screenshot**
 ![List Whitespace-Only Query](./screenshots/Whitespace_Only_Query.png)
 
 ## TC-PROD-032 Select + Search Combined
@@ -1144,7 +1144,7 @@ Steps:
   "limit": 1
 }
 ```
-
+**Screenshot**
 ![List Search Combined](./screenshots/Search_Combined.png)
 
 ## TC-PROD-033 Select + Pagination Combined
@@ -1180,7 +1180,7 @@ Steps:
   "limit": 5
 }
 ```
-
+**Screenshot**
 ![List Pagination Combined](./screenshots/Pagination_Combined.png)
 
 
