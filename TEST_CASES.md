@@ -40,7 +40,7 @@
             ] }
 ```
 
-Screenshot
+**Screenshot**
 ![List Products Success](./screenshots/List_products_success.png)
 
 
@@ -57,15 +57,15 @@ Screenshot
 **Mandatory Fields:**id, title, price, category, stock, rating, images
 
 
-Steps:
+**Steps:**
 
-1.Send GET request to /products?limit=194&skip=0.
+**1.** Send GET request to /products?limit=194&skip=0.
 
-2.Verify status code is 200.
+**2.** Verify status code is 200.
 
-3.Verify response body contains products as an array.
+**3.** Verify response body contains products as an array.
 
-4.For each product in products[], verify the following fields exist and are not null:
+**4.** For each product in products[], verify the following fields exist and are not null:
 
 id,title,price,category,stock,rating,images
 
