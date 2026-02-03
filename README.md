@@ -29,6 +29,16 @@ Markdown – Detailed test case documentation
 
 Git & GitHub – Version control and project sharing
 
+**API Source**
+
+This project uses the public mock API provided by **DummyJSON**.
+
+**API Provider:** https://dummyjson.com/
+
+The backend service is not developed as part of this project.
+All test cases, validations, and documentation focus on API testing practices
+using an existing public API.
+
 📂 **Test Artifacts**
 
 ✅ Postman Collection
@@ -41,6 +51,7 @@ Git & GitHub – Version control and project sharing
 
 **Project structure:**
 
+```json
 E-Commerce API Testing/
 │
 ├── TEST_CASES.md
@@ -50,6 +61,7 @@ E-Commerce API Testing/
 │   ├── numeric_fields.png
 │   ├── products_search.png
 │   └── valid_id.png
+```
 
 📊 **Test Case Management**(Excel)
 
@@ -60,8 +72,6 @@ Test case tracking
 Execution status (Pass / Fail)
 
 Expected vs Actual results
-
-Manual regression readiness
 
 This approach demonstrates hands-on experience with traditional QA test management practices.
 
