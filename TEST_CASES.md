@@ -2,8 +2,13 @@
 ## TC-PROD-001  GET /products (List Products)
 
 **Endpoint:** GET /products?limit=194&skip=0
-**Expected Result:** 200 OK + products array returned
-**Actual Result:** 200 OK + products array returned successfully
+
+**Expected Result:** 
+200 OK + products array returned
+
+**Actual Result:** 
+200 OK + products array returned successfully
+
 **Result:** ✅ Pass
 
 Steps:
